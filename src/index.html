@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandria Minecraft Launcher</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barra de título personalizada -->
+    <div class="titlebar">
+        <div class="titlebar-title">ALEXANDRIA MINECRAFT LAUNCHER</div>
+        <div class="titlebar-controls">
+            <button id="minimize-btn" class="titlebar-button">
+                <i class="fas fa-window-minimize"></i>
+            </button>
+            <button id="maximize-btn" class="titlebar-button">
+                <i class="fas fa-window-maximize"></i>
+            </button>
+            <button id="close-btn" class="titlebar-button">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Menu de navegação -->
+    <nav class="main-nav">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Alexandria Logo" id="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item active" data-target="home">
+                <i class="fas fa-home"></i> Início
+            </li>
+            <li class="nav-item" data-target="mods">
+                <i class="fas fa-puzzle-piece"></i> Mods
+            </li>
+            <li class="nav-item" data-target="servers">
+                <i class="fas fa-server"></i> Servidores
+            </li>
+            <li class="nav-item" data-target="textures">
+                <i class="fas fa-image"></i> Texturas
+            </li>
+            <li class="nav-item" data-target="settings">
+                <i class="fas fa-cog"></i> Configurações
+            </li>
+        </ul>
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="assets/default-avatar.png" alt="Avatar" id="user-avatar">
+            </div>
+            <div class="user-info">
+                <span id="username">Usuário</span>
+                <button id="logout-btn" class="small-btn">Sair</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main class="main-content">
+        <!-- Seção Início -->
+        <section id="home" class="content-section active">
+            <div class="section-header">
+                <h1>ALEXANDRIA MINECRAFT</h1>
+                <p>Explore o mundo de Minecraft com nosso launcher personalizado</p>
+            </div>
+            
+            <div class="news-section">
+                <h2>Notícias e Atualizações</h2>
+                <div class="news-container">
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="assets/news1.jpg" alt="Notícia 1">
+                        </div>
+                        <div class="news-content">
+                            <h3>Atualização 1.20.4</h3>
+                            <p>Confira as novidades da última atualização do Minecraft.</p>
+                            <span class="news-date">24/04/2025</span>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="assets/news2.jpg" alt="Notícia 2">
+                        </div>
+                        <div class="news-content">
+                            <h3>Novos Mods Disponíveis</h3>
+                            <p>Adicionamos novos mods à nossa biblioteca. Confira!</p>
+                            <span class="news-date">20/04/2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="play-section">
+                <div class="version-selector">
+                    <label for="version-select">Versão:</label>
+                    <select id="version-select">
+                        <option value="1.20.4">Minecraft 1.20.4</option>
+                        <option value="1.19.4">Minecraft 1.19.4</option>
+                        <option value="1.18.2">Minecraft 1.18.2</option>
+                        <option value="1.16.5">Minecraft 1.16.5</option>
+                    </select>
+                </div>
+                
+                <div class="server-status">
+                    <span class="status-label">Status do Servidor:</span>
+                    <span class="status-value online">Online</span>
+                    <span class="player-count">Jogadores: 42/100</span>
+                </div>
+                
+                <button id="play-btn" class="primary-btn">
+                    <i class="fas fa-play"></i> JOGAR
+                </button>
+            </div>
+        </section>
+
+        <!-- Seção Mods -->
+        <section id="mods" class="content-section">
+            <div class="section-header">
+                <h1>MODS INTEGRADOS</h1>
+                <p>Acesso fácil a uma biblioteca de mods populares e exclusivos</p>
+            </div>
+            
+            <div class="mods-filter">
+                <input type="text" id="mods-search" placeholder="Pesquisar mods...">
+                <select id="mods-category">
+                    <option value="all">Todas as categorias</option>
+                    <option value="tech">Tecnologia</option>
+                    <option value="magic">Magia</option>
+                    <option value="adventure">Aventura</option>
+                    <option value="building">Construção</option>
+                </select>
+                <select id="mods-version">
+                    <option value="all">Todas as versões</option>
+                    <option value="1.20.4">1.20.4</option>
+                    <option value="1.19.4">1.19.4</option>
+                    <option value="1.18.2">1.18.2</option>
+                    <option value="1.16.5">1.16.5</option>
+                </select>
+            </div>
+            
+            <div class="mods-container">
+                <!-- Mods serão carregados dinamicamente aqui -->
+            </div>
+        </section>
+
+        <!-- Seção Servidores -->
+        <section id="servers" class="content-section">
+            <div class="section-header">
+                <h1>SERVIDORES EXCLUSIVOS</h1>
+                <p>Conecte-se a servidores exclusivos com comunidades ativas</p>
+            </div>
+            
+            <div class="servers-container">
+                <div class="server-card">
+                    <div class="server-info">
+                        <h3>Alexandria Survival</h3>
+                        <p>Servidor de sobrevivência com economia e proteção de terrenos.</p>
+                        <div class="server-meta">
+                            <span class="server-version">1.20.4</span>
+                            <span class="server-players online">42/100 jogadores</span>
+                        </div>
+                    </div>
+                    <button class="secondary-btn">Conectar</button>
+                </div>
+                
+                <div class="server-card">
+                    <div class="server-info">
+                        <h3>Alexandria Creative</h3>
+                        <p>Servidor criativo com WorldEdit e ferramentas de construção avançadas.</p>
+                        <div class="server-meta">
+                            <span class="server-version">1.20.4</span>
+                            <span class="server-players online">28/50 jogadores</span>
+                        </div>
+                    </div>
+                    <button class="secondary-btn">Conectar</button>
+                </div>
+                
+                <div class="server-card">
+                    <div class="server-info">
+                        <h3>Alexandria Skyblock</h3>
+                        <p>Desafio Skyblock com missões personalizadas e recompensas únicas.</p>
+                        <div class="server-meta">
+                            <span class="server-version">1.20.4</span>
+                            <span class="server-players online">15/30 jogadores</span>
+                        </div>
+                    </div>
+                    <button class="secondary-btn">Conectar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Texturas -->
+        <section id="textures" class="content-section">
+            <div class="section-header">
+                <h1>PACOTES DE TEXTURAS</h1>
+                <p>Personalize sua experiência com pacotes de texturas de alta qualidade</p>
+            </div>
+            
+            <div class="textures-container">
+                <div class="texture-card">
+                    <div class="texture-preview">
+                        <img src="assets/texture1.jpg" alt="Textura 1">
+                    </div>
+                    <div class="texture-info">
+                        <h3>Alexandria HD</h3>
+                        <p>Pacote de texturas em alta definição para uma experiência visual incrível.</p>
+                        <div class="texture-meta">
+                            <span class="texture-resolution">128x</span>
+                            <span class="texture-version">1.20.4</span>
+                        </div>
+                    </div>
+                    <button class="secondary-btn">Instalar</button>
+                </div>
+                
+                <div class="texture-card">
+                    <div class="texture-preview">
+                        <img src="assets/texture2.jpg" alt="Textura 2">
+                    </div>
+                    <div class="texture-info">
+                        <h3>Alexandria Medieval</h3>
+                        <p>Texturas com tema medieval para construções e itens.</p>
+                        <div class="texture-meta">
+                            <span class="texture-resolution">64x</span>
+                            <span class="texture-version">1.20.4</span>
+                        </div>
+                    </div>
+                    <button class="secondary-btn">Instalar</button>
+                </div>
+                
+                <div class="texture-card">
+                    <div class="texture-preview">
+                        <img src="assets/texture3.jpg" alt="Textura 3">
+                    </div>
+                    <div class="texture-info">
+                        <h3>Alexandria Simplificado</h3>
+                        <p>Texturas minimalistas para melhor desempenho.</p>
+                        <div class="texture-meta">
+                            <span class="texture-resolution">16x</span>
+                            <span class="texture-version">1.20.4</span>
+                        </div>
+                    </div>
+                    <button class="secondary-btn">Instalar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Configurações -->
+        <section id="settings" class="content-section">
+            <div class="section-header">
+                <h1>CONFIGURAÇÕES</h1>
+                <p>Personalize seu launcher e configurações do jogo</p>
+            </div>
+            
+            <div class="settings-container">
+                <div class="settings-group">
+                    <h2>Configurações do Launcher</h2>
+                    
+                    <div class="setting-item">
+                        <label for="theme-select">Tema:</label>
+                        <select id="theme-select">
+                            <option value="dark">Escuro (Padrão)</option>
+                            <option value="light">Claro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label for="language-select">Idioma:</label>
+                        <select id="language-select">
+                            <option value="pt-BR">Português (Brasil)</option>
+                            <option value="en-US">English (US)</option>
+                            <option value="es-ES">Español</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label for="auto-update">Atualizações automáticas:</label>
+                        <input type="checkbox" id="auto-update" checked>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <h2>Configurações do Java</h2>
+                    
+                    <div class="setting-item">
+                        <label for="java-path">Caminho do Java:</label>
+                        <div class="input-with-button">
+                            <input type="text" id="java-path" placeholder="Automático">
+                            <button class="small-btn">Procurar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label for="memory-slider">Memória RAM:</label>
+                        <div class="slider-container">
+                            <input type="range" id="memory-slider" min="1" max="16" value="4">
+                            <span id="memory-value">4 GB</span>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label for="jvm-args">Argumentos JVM adicionais:</label>
+                        <input type="text" id="jvm-args" placeholder="-XX:+UseG1GC -XX:+ParallelRefProcEnabled">
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <h2>Configurações do Jogo</h2>
+                    
+                    <div class="setting-item">
+                        <label for="game-directory">Diretório do jogo:</label>
+                        <div class="input-with-button">
+                            <input type="text" id="game-directory" placeholder="Padrão">
+                            <button class="small-btn">Procurar</button>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label for="resolution-width">Resolução:</label>
+                        <div class="resolution-inputs">
+                            <input type="number" id="resolution-width" placeholder="1280">
+                            <span>x</span>
+                            <input type="number" id="resolution-height" placeholder="720">
+                        </div>
+                    </div>
+                    
+                    <div class="setting-item">
+                        <label for="fullscreen">Tela cheia:</label>
+                        <input type="checkbox" id="fullscreen">
+                    </div>
+                </div>
+                
+                <div class="settings-actions">
+                    <button id="reset-settings" class="secondary-btn">Restaurar Padrões</button>
+                    <button id="save-settings" class="primary-btn">Salvar Configurações</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Login (inicialmente oculta) -->
+        <section id="login" class="content-section">
+            <div class="login-container">
+                <div class="login-header">
+                    <img src="assets/logo.png" alt="Alexandria Logo" class="login-logo">
+                    <h1>ALEXANDRIA MINECRAFT LAUNCHER</h1>
+                </div>
+                
+                <div class="login-tabs">
+                    <button class="login-tab active" data-target="microsoft-login">Microsoft</button>
+                    <button class="login-tab" data-target="mojang-login">Mojang</button>
+                </div>
+                
+                <div id="microsoft-login" class="login-form active">
+                    <p class="login-info">Faça login com sua conta Microsoft para jogar Minecraft.</p>
+                    <button id="microsoft-login-btn" class="primary-btn">
+                        <i class="fab fa-microsoft"></i> Login com Microsoft
+                    </button>
+                </div>
+                
+                <div id="mojang-login" class="login-form">
+                    <p class="login-info">Faça login com sua conta Mojang para jogar Minecraft.</p>
+                    <div class="form-group">
+                        <label for="mojang-email">Email:</label>
+                        <input type="email" id="mojang-email" placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="mojang-password">Senha:</label>
+                        <input type="password" id="mojang-password" placeholder="Sua senha">
+                    </div>
+                    <button id="mojang-login-btn" class="primary-btn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Overlay de carregamento -->
+    <div id="loading-overlay" class="hidden">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h2 id="loading-text">Iniciando o jogo...</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="loading-progress"></div>
+            </div>
+            <p id="loading-details">Preparando arquivos...</p>
+        </div>
+    </div>
+
+    <script src="js/renderer.js"></script>
+</body>
+</html>

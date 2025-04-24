@@ -1,0 +1,39 @@
+{
+  "name": "alexandria-minecraft-launcher",
+  "version": "1.0.0",
+  "description": "Launcher personalizado de Minecraft inspirado no design do site Alexandria",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "minecraft",
+    "launcher",
+    "electron",
+    "alexandria"
+  ],
+  "author": "Manus",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-builder": "^24.6.4",
+    "electron-packager": "^17.1.2"
+  },
+  "dependencies": {
+    "electron-store": "^8.1.0",
+    "minecraft-launcher-core": "^3.17.3"
+  },
+  "build": {
+    "appId": "com.alexandria.minecraft-launcher",
+    "productName": "Alexandria Minecraft Launcher",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "src/assets/icon.ico"
+    }
+  }
+}
